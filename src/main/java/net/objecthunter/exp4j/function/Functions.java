@@ -34,10 +34,13 @@ public class Functions {
     private static final int INDEX_LOG1P = 11;
     private static final int INDEX_LOGB = 12;
     private static final int INDEX_SGN = 13;
-    private static final int INDEX_TO_RADIAN = 14;
-    private static final int INDEX_TO_DEGREE = 15;
+     private static final int INDEX_SINH = 14;
+    private static final int INDEX_COSH = 15;
+    private static final int INDEX_TANH = 16;
+    private static final int INDEX_TO_RADIAN = 17;
+    private static final int INDEX_TO_DEGREE = 18;
 
-    private static final Function[] BUILT_IN_FUNCTIONS = new Function[16];
+    private static final Function[] BUILT_IN_FUNCTIONS = new Function[19];
 
     static {
         
@@ -131,6 +134,24 @@ public class Functions {
                 return Math.log(args[1]) / Math.log(args[0]);
             }
         };
+        BUILT_IN_FUNCTIONS[INDEX_SINH] = new Function("sinh") {
+            @Override
+            public double apply(double... args) {
+                return Math.sinh(args[0]);
+            }
+        };
+        BUILT_IN_FUNCTIONS[INDEX_TANH] = new Function("tanh") {
+            @Override
+            public double apply(double... args) {
+                return Math.tanh(args[0]);
+            }
+        };
+        BUILT_IN_FUNCTIONS[INDEX_COSH] = new Function("cosh") {
+            @Override
+            public double apply(double... args) {
+                return Math.cosh(args[0]);
+            }
+        };
         BUILT_IN_FUNCTIONS[INDEX_TO_RADIAN] = new Function("toradian") {
             @Override
             public double apply(double... args) {
@@ -181,6 +202,12 @@ public class Functions {
                 return BUILT_IN_FUNCTIONS[INDEX_EXPM1];
             case "signum":
                 return BUILT_IN_FUNCTIONS[INDEX_SGN];
+            case "sinh":
+                return BUILT_IN_FUNCTIONS[INDEX_SINH];
+            case "cosh":
+                return BUILT_IN_FUNCTIONS[INDEX_COSH];
+            case "tanh":
+                return BUILT_IN_FUNCTIONS[INDEX_TANH];
             case "toradian":
                 return BUILT_IN_FUNCTIONS[INDEX_TO_RADIAN];
             case "todegree":
